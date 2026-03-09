@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+ERROR: Index 8 out of bound 7 downto 0
+Time: 900 ns  Iteration: 0  Process: /tb/stim
+  File: H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB1/LAB1.srcs/sim_1/new/tb.vhd
+
+HDL Line: H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB1/LAB1.srcs/sim_1/new/tb.vhd:62
