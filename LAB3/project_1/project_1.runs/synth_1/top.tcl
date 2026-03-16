@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/lab1/Downloads/lab_2_gray_counter/project_1/project_1.runs/synth_1/top.tcl"
+  variable script "H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.runs/synth_1/top.tcl"
   variable category "vivado_synth"
 }
 
@@ -55,36 +55,23 @@ if {$::dispatch::connected} {
   }
 }
 
-proc create_report { reportName command } {
-  set status "."
-  append status $reportName ".fail"
-  if { [file exists $status] } {
-    eval file delete [glob $status]
-  }
-  send_msg_id runtcl-4 info "Executing : $command"
-  set retval [eval catch { $command } msg]
-  if { $retval != 0 } {
-    set fp [open $status w]
-    close $fp
-    send_msg_id runtcl-5 warning "$msg"
-  }
-}
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/lab1/Downloads/lab_2_gray_counter/project_1/project_1.cache/wt [current_project]
-set_property parent.project_path C:/Users/lab1/Downloads/lab_2_gray_counter/project_1/project_1.xpr [current_project]
+set_property webtalk.parent_dir {H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.cache/wt} [current_project]
+set_property parent.project_path {H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/lab1/Downloads/lab_2_gray_counter/project_1/project_1.cache/ip [current_project]
+set_property ip_output_repo {h:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib C:/Users/lab1/Downloads/top.vhd
+read_vhdl -library xil_defaultlib {{H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.srcs/sources_1/new/top.vhd}}
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -94,12 +81,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/lab1/Downloads/isp3s.xdc
-set_property used_in_implementation false [get_files C:/Users/lab1/Downloads/isp3s.xdc]
+read_xdc {{H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/isp3s.xdc}}
+set_property used_in_implementation false [get_files {{H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/isp3s.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/lab1/Downloads/lab_2_gray_counter/project_1/project_1.srcs/utils_1/imports/synth_1/top.dcp
+read_checkpoint -auto_incremental -incremental {H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.srcs/utils_1/imports/synth_1/top.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
@@ -116,7 +103,7 @@ set_param constraints.enableBinaryConstraints false
 write_checkpoint -force -noxdef top.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb"
+generate_parallel_reports -reports { "report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb"  } 
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

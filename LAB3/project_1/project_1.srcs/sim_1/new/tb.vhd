@@ -65,13 +65,49 @@ clk_i <= not clk_i after 10 ns;
 
 stin: process
     begin
+        sw_i <= "00000000";
+        btn_i <= "0000";
+        wait for 2 ms;
+        sw_i(0) <= '1'; -- 0001
+        --DP setting
         sw_i(4) <= '1';
-        wait for 5 ms;
         sw_i(5) <= '1';
         wait for 5 ms;
+        
+        --pushing BTNL
+        btn_i(3) <= '1';
+        wait for 1 ms;
+        btn_i(3) <= '0';
+        --change number
+        sw_i(1) <= '1'; -- 0011
+        --DP setting
+        sw_i(4) <= '0';
         sw_i(6) <= '1';
-        wait for 5 ms;
-        --sw_i(7) <= '1';
+        wait for 2 ms;
+        
+        --pushing BTNC
+        btn_i(2) <= '1';
+        wait for 1 ms;
+        btn_i(2) <= '0';
+        --change number
+        sw_i(2) <= '1'; -- 0111
+        --DP setting
+        sw_i(5) <= '0';
+        sw_i(7) <= '1';
+        wait for 2 ms;
+        
+        --pushing BTNR
+        btn_i(1) <= '1';
+        wait for 1 ms;
+        btn_i(1) <= '0';
+        --change number
+        sw_i(3) <= '1'; -- 1111
+        wait for 2 ms;
+        
+        --pushing BTND
+        btn_i(0) <= '1';
+        wait for 1 ms;
+        btn_i(0) <= '0';
         wait;
     end process;
 

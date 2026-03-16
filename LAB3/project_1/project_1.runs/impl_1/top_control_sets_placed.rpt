@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Mar  9 17:29:30 2026
-| Host         : fpgalab210 running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Mon Mar 16 14:14:58 2026
+| Host         : user-KOMPUTER running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
 | Device       : xc7a100t
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     4 |
-|    Minimum number of control sets                        |     4 |
+| Total control sets                                       |     9 |
+|    Minimum number of control sets                        |     9 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    15 |
+| Unused register locations in slices containing registers |    18 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     4 |
-| >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     2 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     0 |
+| Total control sets |     9 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     4 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               4 |            3 |
+| No           | No                    | No                     |              31 |           10 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              32 |            9 |
-| Yes          | No                    | No                     |               5 |            2 |
-| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | No                    | No                     |              12 |            5 |
+| Yes          | No                    | Yes                    |               3 |            2 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -70,13 +70,18 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------+----------------------------+------------------+------------------+----------------+--------------+
-|   Clock Signal   |        Enable Signal       | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------+----------------------------+------------------+------------------+----------------+--------------+
-|  clk_i_IBUF_BUFG | led7_seg_curr_o[0]_i_1_n_0 |                  |                1 |              1 |         1.00 |
-|  clk_i_IBUF_BUFG |                            |                  |                3 |              4 |         1.33 |
-|  clk_i_IBUF_BUFG | led7_an_active             |                  |                1 |              4 |         4.00 |
-|  clk_i_IBUF_BUFG |                            | p_0_in           |                9 |             32 |         3.56 |
-+------------------+----------------------------+------------------+------------------+----------------+--------------+
++--------------------------------------+-----------------------+-------------------------+------------------+----------------+--------------+
+|             Clock Signal             |     Enable Signal     |     Set/Reset Signal    | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------------------------+-----------------------+-------------------------+------------------+----------------+--------------+
+|  clk_i_IBUF_BUFG                     |                       |                         |                2 |              3 |         1.50 |
+|  clk_i_IBUF_BUFG                     | number_set[3]_i_1_n_0 | sel0[32]                |                2 |              3 |         1.50 |
+|  clk_i_IBUF_BUFG                     | number_set[3]_i_1_n_0 |                         |                3 |              4 |         1.33 |
+|  led7_seg_active_i_reg[1][7]_i_2_n_0 |                       |                         |                2 |              7 |         3.50 |
+|  led7_seg_active_i_reg[0][7]_i_1_n_0 |                       |                         |                2 |              7 |         3.50 |
+|  led7_seg_active_i_reg[2][7]_i_1_n_0 |                       |                         |                2 |              7 |         3.50 |
+|  led7_seg_active_i_reg[3][7]_i_1_n_0 |                       |                         |                2 |              7 |         3.50 |
+|  clk_i_IBUF_BUFG                     | led7_an_active        |                         |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG                     |                       | clock_count[31]_i_1_n_0 |                9 |             32 |         3.56 |
++--------------------------------------+-----------------------+-------------------------+------------------+----------------+--------------+
 
 

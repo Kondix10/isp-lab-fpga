@@ -1,7 +1,7 @@
 -------------------------------------
-| Tool Version : Vivado v.2023.2
-| Date         : Mon Mar  9 17:29:30 2026
-| Host         : fpgalab210
+| Tool Version : Vivado v.2024.2
+| Date         : Mon Mar 16 14:14:58 2026
+| Host         : user-KOMPUTER
 | Design       : design_1
 | Device       : xc7a100t-csg324-1--
 -------------------------------------

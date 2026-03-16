@@ -4,7 +4,7 @@
 # Vivado(TM)
 # runme.sh: a Vivado-generated Runs Script for UNIX
 # Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-# Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+# Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 # 
 
 echo "This script was generated under a different operating system."
@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=C:/Xilinx/Vitis/2023.2/bin;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2023.2/bin
+  PATH=E:/ProgramySSD/Xilinx/Vitis/2024.2/bin;E:/ProgramySSD/Xilinx/Vivado/2024.2/ids_lite/ISE/bin/nt64;E:/ProgramySSD/Xilinx/Vivado/2024.2/ids_lite/ISE/lib/nt64:E:/ProgramySSD/Xilinx/Vivado/2024.2/bin
 else
-  PATH=C:/Xilinx/Vitis/2023.2/bin;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2023.2/bin:$PATH
+  PATH=E:/ProgramySSD/Xilinx/Vitis/2024.2/bin;E:/ProgramySSD/Xilinx/Vivado/2024.2/ids_lite/ISE/bin/nt64;E:/ProgramySSD/Xilinx/Vivado/2024.2/ids_lite/ISE/lib/nt64:E:/ProgramySSD/Xilinx/Vivado/2024.2/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/lab1/Downloads/lab_2_gray_counter/project_1/project_1.runs/impl_1'
+HD_PWD='H:/ARCHIWUM/Studia/Semestr 6/Pliki/ISP/Laboratorium/LAB3/project_1/project_1.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

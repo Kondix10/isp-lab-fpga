@@ -1,5 +1,50 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="lab1" Host="fpgalab210" Pid="11256" HostCore="24" HostMemory="016908685312">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="12796" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="8916" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="14780" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="7988" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="6544" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="3476" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="16820" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="12428" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="2268" HostCore="16" HostMemory="033241845760">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="konra" Host="USER-KOMPUTER" Pid="6588" HostCore="16" HostMemory="033241845760">
     </Process>
 </ProcessHandle>

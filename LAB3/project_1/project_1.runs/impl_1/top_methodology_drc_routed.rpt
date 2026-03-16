@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Mar  9 17:29:48 2026
-| Host         : fpgalab210 running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Mon Mar 16 14:15:18 2026
+| Host         : user-KOMPUTER running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
 | Device       : xc7a100tcsg324-1
@@ -22,114 +22,281 @@ Table of Contents
             Netlist: netlist
           Floorplan: design_1
       Design limits: <entire design considered>
-             Max violations: <unlimited>
-             Violations found: 20
-+-----------+----------+-------------------------------+------------+
-| Rule      | Severity | Description                   | Violations |
-+-----------+----------+-------------------------------+------------+
-| TIMING-18 | Warning  | Missing input or output delay | 20         |
-+-----------+----------+-------------------------------+------------+
+             Max checks: <unlimited>
+             Checks found: 53
++-----------+----------+--------------------------------+--------+
+| Rule      | Severity | Description                    | Checks |
++-----------+----------+--------------------------------+--------+
+| TIMING-18 | Warning  | Missing input or output delay  | 24     |
+| TIMING-20 | Warning  | Non-clocked latch              | 28     |
+| LATCH-1   | Advisory | Existing latches in the design | 1      |
++-----------+----------+--------------------------------+--------+
 
 2. REPORT DETAILS
 -----------------
 TIMING-18#1 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on btn_i[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#2 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on btn_i[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#3 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on btn_i[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#4 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on btn_i[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#5 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[4] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#6 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[5] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#7 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[6] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#8 Warning
 Missing input or output delay  
-An input delay is missing on sw_i[7] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#9 Warning
 Missing input or output delay  
-An output delay is missing on led7_an_o[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[4] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An output delay is missing on led7_an_o[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[5] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#11 Warning
 Missing input or output delay  
-An output delay is missing on led7_an_o[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[6] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#12 Warning
 Missing input or output delay  
-An output delay is missing on led7_an_o[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on sw_i[7] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#13 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_an_o[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#14 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_an_o[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#15 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_an_o[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#16 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_an_o[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#17 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[4] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_seg_o[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#18 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[5] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_seg_o[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#19 Warning
 Missing input or output delay  
-An output delay is missing on led7_seg_o[6] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led7_seg_o[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#20 Warning
 Missing input or output delay  
+An output delay is missing on led7_seg_o[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#21 Warning
+Missing input or output delay  
+An output delay is missing on led7_seg_o[4] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#22 Warning
+Missing input or output delay  
+An output delay is missing on led7_seg_o[5] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#23 Warning
+Missing input or output delay  
+An output delay is missing on led7_seg_o[6] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#24 Warning
+Missing input or output delay  
 An output delay is missing on led7_seg_o[7] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][1] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][2] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][3] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][4] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][5] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][6] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[0][7] cannot be properly analyzed as its control pin led7_seg_active_i_reg[0][7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][1] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][2] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][3] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][4] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][5] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][6] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[1][7] cannot be properly analyzed as its control pin led7_seg_active_i_reg[1][7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#15 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][1] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#16 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][2] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#17 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][3] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#18 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][4] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#19 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][5] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#20 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][6] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#21 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[2][7] cannot be properly analyzed as its control pin led7_seg_active_i_reg[2][7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#22 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][1] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#23 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][2] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#24 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][3] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#25 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][4] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#26 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][5] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#27 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][6] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#28 Warning
+Non-clocked latch  
+The latch led7_seg_active_i_reg[3][7] cannot be properly analyzed as its control pin led7_seg_active_i_reg[3][7]/G is not reached by a timing clock
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 28 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 
