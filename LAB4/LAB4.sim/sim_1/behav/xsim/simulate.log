@@ -1,6 +1,0 @@
-Time resolution is 1 ps
-ERROR: Index 8 out of bound 7 downto 0
-Time: 1304190 ns  Iteration: 0  Process: /tb/dut/line__69
-  File: /run/media/leonard/3D434BE923AF27A8/ISP_Labs/isp-lab-fpga/LAB4_new_vivado/LAB4.srcs/sources_1/new/top.vhd
-
-HDL Line: /run/media/leonard/3D434BE923AF27A8/ISP_Labs/isp-lab-fpga/LAB4_new_vivado/LAB4.srcs/sources_1/new/top.vhd:83

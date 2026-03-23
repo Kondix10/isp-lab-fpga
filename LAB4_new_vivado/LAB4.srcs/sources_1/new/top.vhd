@@ -79,56 +79,67 @@ begin
             -- count at 9600Hz
             if(clock_count = 10000) then
                 clock_count <= -417;
-                read_bit <= read_bit - 1;
-                byte_val(read_bit) <= RXD_i;
+                case read_bit is
+                    when 0 => byte_val(0) <= RXD_i;
+                    when 1 => byte_val(1) <= RXD_i;
+                    when 2 => byte_val(2) <= RXD_i;
+                    when 3 => byte_val(3) <= RXD_i;
+                    when 4 => byte_val(4) <= RXD_i;
+                    when 5 => byte_val(5) <= RXD_i;
+                    when 6 => byte_val(6) <= RXD_i;
+                    when 7 => byte_val(7) <= RXD_i;
+                    when others => byte_val(0) <= RXD_i;
+                end case;
+                read_bit <= read_bit + 1;
+
                 
                 -- if done reading
-                if(read_bit = 0) then
+                if(read_bit = 8) then
                     is_reading <= '0';
-                    read_bit <= 8;
+                    read_bit <= 0;
                     clock_count <= 0;
                     --disp_digit_ = "00001111000011110000111100001111";
                     
                     -- display digit less significant
                     case byte_val(3 downto 0) is
-                        when "0000" => disp_digit_i(7 downto 0) <= "0000001-"; --0
-                        when "0001" => disp_digit_i(7 downto 0) <= "1001111-"; --1
-                        when "0010" => disp_digit_i(7 downto 0) <= "0010010-"; --2
-                        when "0011" => disp_digit_i(7 downto 0) <= "0000110-"; --3
-                        when "0100" => disp_digit_i(7 downto 0) <= "1001100-"; --4
-                        when "0101" => disp_digit_i(7 downto 0) <= "0100100-"; --5
-                        when "0110" => disp_digit_i(7 downto 0) <= "0100000-"; --6
-                        when "0111" => disp_digit_i(7 downto 0) <= "0001111-"; --7
-                        when "1000" => disp_digit_i(7 downto 0) <= "0000000-"; --8
-                        when "1001" => disp_digit_i(7 downto 0) <= "0000100-"; --9
-                        when "1010" => disp_digit_i(7 downto 0) <= "0001000-"; --A
-                        when "1011" => disp_digit_i(7 downto 0) <= "1100000-"; --B (b)
-                        when "1100" => disp_digit_i(7 downto 0) <= "0110001-"; --C
-                        when "1101" => disp_digit_i(7 downto 0) <= "1000010-"; --D (d)
-                        when "1110" => disp_digit_i(7 downto 0) <= "0110000-"; --E
-                        when "1111" => disp_digit_i(7 downto 0) <= "0111000-"; --F
-                        when others => disp_digit_i(7 downto 0) <= "0000001-"; --0 when other
+                        when "0000" => disp_digit_i(7 downto 0) <= "00000011"; --0
+                        when "0001" => disp_digit_i(7 downto 0) <= "10011111"; --1
+                        when "0010" => disp_digit_i(7 downto 0) <= "00100101"; --2
+                        when "0011" => disp_digit_i(7 downto 0) <= "00001101"; --3
+                        when "0100" => disp_digit_i(7 downto 0) <= "10011001"; --4
+                        when "0101" => disp_digit_i(7 downto 0) <= "01001001"; --5
+                        when "0110" => disp_digit_i(7 downto 0) <= "01000001"; --6
+                        when "0111" => disp_digit_i(7 downto 0) <= "00011111"; --7
+                        when "1000" => disp_digit_i(7 downto 0) <= "00000001"; --8
+                        when "1001" => disp_digit_i(7 downto 0) <= "00001001"; --9
+                        when "1010" => disp_digit_i(7 downto 0) <= "00010001"; --A
+                        when "1011" => disp_digit_i(7 downto 0) <= "11000001"; --B (b)
+                        when "1100" => disp_digit_i(7 downto 0) <= "01100011"; --C
+                        when "1101" => disp_digit_i(7 downto 0) <= "10000101"; --D (d)
+                        when "1110" => disp_digit_i(7 downto 0) <= "01100001"; --E
+                        when "1111" => disp_digit_i(7 downto 0) <= "01110001"; --F
+                        when others => disp_digit_i(7 downto 0) <= "00000011"; --0 when other
                     end case;
                     
                     -- display digit most significant
                     case byte_val(7 downto 4) is
-                        when "0000" => disp_digit_i(15 downto 8) <= "0000001-"; --0
-                        when "0001" => disp_digit_i(15 downto 8) <= "1001111-"; --1
-                        when "0010" => disp_digit_i(15 downto 8) <= "0010010-"; --2
-                        when "0011" => disp_digit_i(15 downto 8) <= "0000110-"; --3
-                        when "0100" => disp_digit_i(15 downto 8) <= "1001100-"; --4
-                        when "0101" => disp_digit_i(15 downto 8) <= "0100100-"; --5
-                        when "0110" => disp_digit_i(15 downto 8) <= "0100000-"; --6
-                        when "0111" => disp_digit_i(15 downto 8) <= "0001111-"; --7
-                        when "1000" => disp_digit_i(15 downto 8) <= "0000000-"; --8
-                        when "1001" => disp_digit_i(15 downto 8) <= "0000100-"; --9
-                        when "1010" => disp_digit_i(15 downto 8) <= "0001000-"; --A
-                        when "1011" => disp_digit_i(15 downto 8) <= "1100000-"; --B (b)
-                        when "1100" => disp_digit_i(15 downto 8) <= "0110001-"; --C
-                        when "1101" => disp_digit_i(15 downto 8) <= "1000010-"; --D (d)
-                        when "1110" => disp_digit_i(15 downto 8) <= "0110000-"; --E
-                        when "1111" => disp_digit_i(15 downto 8) <= "0111000-"; --F
-                        when others => disp_digit_i(15 downto 8) <= "0000001-"; --0 when other
+                        when "0000" => disp_digit_i(15 downto 8) <= "00000011"; --0
+                        when "0001" => disp_digit_i(15 downto 8) <= "10011111"; --1
+                        when "0010" => disp_digit_i(15 downto 8) <= "00100101"; --2
+                        when "0011" => disp_digit_i(15 downto 8) <= "00001101"; --3
+                        when "0100" => disp_digit_i(15 downto 8) <= "10011001"; --4
+                        when "0101" => disp_digit_i(15 downto 8) <= "01001001"; --5
+                        when "0110" => disp_digit_i(15 downto 8) <= "01000001"; --6
+                        when "0111" => disp_digit_i(15 downto 8) <= "00011111"; --7
+                        when "1000" => disp_digit_i(15 downto 8) <= "00000001"; --8
+                        when "1001" => disp_digit_i(15 downto 8) <= "00001001"; --9
+                        when "1010" => disp_digit_i(15 downto 8) <= "00010001"; --A
+                        when "1011" => disp_digit_i(15 downto 8) <= "11000001"; --B (b)
+                        when "1100" => disp_digit_i(15 downto 8) <= "01100011"; --C
+                        when "1101" => disp_digit_i(15 downto 8) <= "10000101"; --D (d)
+                        when "1110" => disp_digit_i(15 downto 8) <= "01100001"; --E
+                        when "1111" => disp_digit_i(15 downto 8) <= "01110001"; --F
+                        when others => disp_digit_i(15 downto 8) <= "00000011"; --0 when other
                     end case;
                 end if;
                 
