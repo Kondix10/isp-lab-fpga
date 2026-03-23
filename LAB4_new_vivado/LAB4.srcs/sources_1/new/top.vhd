@@ -68,7 +68,7 @@ begin
     
 process(clk_i, RXD_i)
 begin
-    if(rising_edge(RXD_i)) then
+    if(falling_edge(RXD_i)) then
         if(is_reading = '0') then
             is_reading <= '1';
         end if;
@@ -79,6 +79,7 @@ begin
             -- count at 9600Hz
             if(clock_count = 10000) then
                 clock_count <= -417;
+                read_bit <= read_bit - 1;
                 case read_bit is
                     when 0 => byte_val(0) <= RXD_i;
                     when 1 => byte_val(1) <= RXD_i;
@@ -90,13 +91,12 @@ begin
                     when 7 => byte_val(7) <= RXD_i;
                     when others => byte_val(0) <= RXD_i;
                 end case;
-                read_bit <= read_bit + 1;
-
+               
                 
                 -- if done reading
-                if(read_bit = 8) then
+                if(read_bit = 0) then
                     is_reading <= '0';
-                    read_bit <= 0;
+                    read_bit <= 8;
                     clock_count <= 0;
                     --disp_digit_ = "00001111000011110000111100001111";
                     
