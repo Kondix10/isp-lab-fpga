@@ -80,12 +80,10 @@ component freq_divider is
 end component;
 
 signal byte_val: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
-signal read_bit: integer := 7;
 signal disp_digit_i : STD_LOGIC_VECTOR(31 downto 0) := "11111111111111111111111111111111";
-signal is_reading: STD_LOGIC := '0';
 
 signal sample_clk: STD_LOGIC := '0';
-constant sample_rate: natural := 100_000_000 / (16 * 9600);
+constant sample_rate: natural := 100_000_000 / (16 * 9600) / 2;
 signal sample_counter: integer range 0 to 15;
 
 type status is (Await, Start, Listen, Stop);
@@ -134,87 +132,10 @@ begin
             when Stop =>
                 if sample_counter = 7 then
                     state <= Await;
-                    disp_digit_i(31 downto 25) <= digit_disp(byte_val(7 downto 4));                    digit_i(31 downto 25) <= digit_disp(byte_val(7 downto 4));
-                    disp_digit_i(23 downto 17) <= digit_disp(byte_val(3 downto 0));
+                    disp_digit_i(31 downto 24) <= digit_disp(byte_val(7 downto 4));
+                    disp_digit_i(23 downto 16) <= digit_disp(byte_val(3 downto 0));
                 end if;
         end case;
-        if(is_reading = '0') then
-            if(RXD_i = '0') then
-                is_reading <= '1';
-                byte_val <= "00000000";
-            end if;
-        end if;
-        if(is_reading = '1') then
-            clock_count <= clock_count + 1;
-            -- count at 9600Hz
-            if(clock_count = 20833/4) then
-                clock_count <= -20833/4;
-                read_bit <= read_bit - 1;
-                case read_bit is
-                    when 0 => byte_val(0) <= RXD_i;
-                    when 1 => byte_val(1) <= RXD_i;
-                    when 2 => byte_val(2) <= RXD_i;
-                    when 3 => byte_val(3) <= RXD_i;
-                    when 4 => byte_val(4) <= RXD_i;
-                    when 5 => byte_val(5) <= RXD_i;
-                    when 6 => byte_val(6) <= RXD_i;
-                    when 7 => byte_val(7) <= RXD_i;
-                    when others => byte_val(0) <= byte_val(0);
-                end case;
-               
-                
-                -- if done reading
-                if(read_bit = 0) then
-                    is_reading <= '0';
-                    read_bit <= 8;
-                    clock_count <= 0;
-                    --disp_digit_ = "00001111000011110000111100001111";
-                    
-                    -- display digit less significant
-                    case byte_val(3 downto 0) is
-                        when "0000" => disp_digit_i(7 downto 0) <= "00000011"; --0
-                        when "0001" => disp_digit_i(7 downto 0) <= "10011111"; --1
-                        when "0010" => disp_digit_i(7 downto 0) <= "00100101"; --2
-                        when "0011" => disp_digit_i(7 downto 0) <= "00001101"; --3
-                        when "0100" => disp_digit_i(7 downto 0) <= "10011001"; --4
-                        when "0101" => disp_digit_i(7 downto 0) <= "01001001"; --5
-                        when "0110" => disp_digit_i(7 downto 0) <= "01000001"; --6
-                        when "0111" => disp_digit_i(7 downto 0) <= "00011111"; --7
-                        when "1000" => disp_digit_i(7 downto 0) <= "00000001"; --8
-                        when "1001" => disp_digit_i(7 downto 0) <= "00001001"; --9
-                        when "1010" => disp_digit_i(7 downto 0) <= "00010001"; --A
-                        when "1011" => disp_digit_i(7 downto 0) <= "11000001"; --B (b)
-                        when "1100" => disp_digit_i(7 downto 0) <= "01100011"; --C
-                        when "1101" => disp_digit_i(7 downto 0) <= "10000101"; --D (d)
-                        when "1110" => disp_digit_i(7 downto 0) <= "01100001"; --E
-                        when "1111" => disp_digit_i(7 downto 0) <= "01110001"; --F
-                        when others => disp_digit_i(7 downto 0) <= "00000011"; --0 when other
-                    end case;
-                    
-                    -- display digit most significant
-                    case byte_val(7 downto 4) is
-                        when "0000" => disp_digit_i(15 downto 8) <= "00000011"; --0
-                        when "0001" => disp_digit_i(15 downto 8) <= "10011111"; --1
-                        when "0010" => disp_digit_i(15 downto 8) <= "00100101"; --2
-                        when "0011" => disp_digit_i(15 downto 8) <= "00001101"; --3
-                        when "0100" => disp_digit_i(15 downto 8) <= "10011001"; --4
-                        when "0101" => disp_digit_i(15 downto 8) <= "01001001"; --5
-                        when "0110" => disp_digit_i(15 downto 8) <= "01000001"; --6
-                        when "0111" => disp_digit_i(15 downto 8) <= "00011111"; --7
-                        when "1000" => disp_digit_i(15 downto 8) <= "00000001"; --8
-                        when "1001" => disp_digit_i(15 downto 8) <= "00001001"; --9
-                        when "1010" => disp_digit_i(15 downto 8) <= "00010001"; --A
-                        when "1011" => disp_digit_i(15 downto 8) <= "11000001"; --B (b)
-                        when "1100" => disp_digit_i(15 downto 8) <= "01100011"; --C
-                        when "1101" => disp_digit_i(15 downto 8) <= "10000101"; --D (d)
-                        when "1110" => disp_digit_i(15 downto 8) <= "01100001"; --E
-                        when "1111" => disp_digit_i(15 downto 8) <= "01110001"; --F
-                        when others => disp_digit_i(15 downto 8) <= "00000011"; --0 when other
-                    end case;
-                end if;
-                
-            end if;
-        end if;
     end if;
 end process;
 
